@@ -56,10 +56,10 @@ public class SiteNavigation {
 		
 		//	Selecting random bookmarks and saving them
 		SavingAndOpeningBookmarks(10, driver);
-		Thread.sleep(1500);
+		Thread.sleep(3000);
 		
 		//	Closing driver
-		//driver.quit();
+		driver.quit();
 	}	
 	
 	//	Selecting search parameters
