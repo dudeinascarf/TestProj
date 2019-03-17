@@ -1,6 +1,10 @@
 # TestProj
 Site nav automation
-<h1>Description </h1>
+
+<h1>Description</h1>
+<p>Automation project written o java.</p>
+
+<h1>Execution steps</h1>
 <p>
 Task which must be done using java + webdriver 
 
@@ -21,3 +25,6 @@ The script must implement the following steps:
 
 Deadline - 1 week
 </p>
+
+<h1>Execution file</h1>
+<p>TestProj/src/tesPack/SiteNavigation.java</p>
