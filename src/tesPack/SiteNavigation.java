@@ -62,7 +62,7 @@ public class SiteNavigation {
 		driver.quit();
 	}	
 	
-	//	Selecting search parameters
+	//	Search parameters of section and search phrase
 	private static void SearchParameters(String section, String searchQuote, WebDriver driver) {
 
 		driver.findElement(By.xpath("//*[@id=\"main_table\"]/span[4]/a")).click();
@@ -71,7 +71,7 @@ public class SiteNavigation {
 		driver.findElement(By.xpath("//*[@id=\"ptxt\"]")).sendKeys(searchQuote);
 	}
 	
-	//	Selecting elements from drop-down panel
+	//	Drop-down panel interaction
 	private static void DropDownSelect(String dropDownName, String desiredElement,  WebDriver driver) {
 		
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -101,7 +101,7 @@ public class SiteNavigation {
 		driver.findElement(By.xpath("//*[@id=\"sbtn\"]")).click();
 	}
 	
-	//	Selecting elements from catalog ads list and saving them
+	//	Catalog ads list search and compare
 	private static void SavingAndOpeningBookmarks(int checkCount, WebDriver driver) throws InterruptedException {
 		
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -120,23 +120,13 @@ public class SiteNavigation {
 		Random rand = new Random();
 		
 		//	Finding and selecting random checkboxes	
-		boolean result = false;
-		int attempts = 0;
 		int amount = 0;
-		for(WebElement el : checkboxes) {
-			if(!el.isSelected() && amount <= checkCount) {
+		for(WebElement checkbox : checkboxes) {
+			if(!checkbox.isSelected() && amount <= checkCount) {
 				amount++;
+				actions.moveToElement(checkboxes.get(rand.nextInt(checkboxes.size()))).click().perform();
 				Thread.sleep(500);
-				while(attempts < 2) {
-					try {
-						actions.moveToElement(checkboxes.get(rand.nextInt(checkboxes.size()))).click().perform();
-						result = true;
-						break;
-					} catch(StaleElementReferenceException e) { }
-					attempts++;
-				}
 			}
-			
 		}
 		
 		//	Saving ads and urls
